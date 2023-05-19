@@ -23,11 +23,18 @@ const getSingleJob = async (req: Request, res: Response) => {
 }
 const createJob = async (req: Request, res: Response) => {
   const userId = req.user.userId
-  const { company, position } = req.body
+  const { company, position, jobLocation, jobType, status } = req.body
   if (!company || !position) {
     throw new BadRequest('Please fill all values')
   }
-  const job = await JobsModel.create({ company, position, createdBy: userId })
+  const job = await JobsModel.create({
+    company,
+    position,
+    jobLocation,
+    jobType,
+    status,
+    createdBy: userId,
+  })
   res.status(StatusCodes.CREATED).json({ job })
 }
 const editJob = async (req: Request, res: Response) => {

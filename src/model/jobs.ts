@@ -22,6 +22,15 @@ const JobSchema = new Schema(
       ref: 'User',
       required: [true, 'Please enter name'],
     },
+    jobLocation: {
+      type: String,
+      required: true,
+    },
+    jobType: {
+      type: String,
+      enum: ['full-time', 'part-time', 'remote', 'internship'],
+      required: true,
+    },
   },
   { timestamps: true }
 )
