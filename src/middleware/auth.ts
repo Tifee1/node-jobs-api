@@ -20,11 +20,18 @@ const authMiddleWare = async (
       authHeader.split(' ')[1],
       process.env.JWT_SECRET_KEY
     ) as JwtPayload & { userId: any; name: string }
+
     req.user = { userId: payload.userId, name: payload.name }
+
+    const testUser = req.user.userId === '6466d9047a17cd26ce2d0155'
+
+    if (testUser) {
+      req.user.testUser = testUser
+    }
 
     next()
   } catch (error) {
-    throw new Unauthenticated('Unauthorized request')
+    throw new Unauthenticated('Request Token not valid')
   }
 }
 

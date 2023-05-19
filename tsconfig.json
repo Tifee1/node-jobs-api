@@ -13,6 +13,7 @@
     "strict": true,
     "noImplicitAny": true,
     /* Module Resolution Options */
+    "resolveJsonModule": true,
     "moduleResolution": "node",
     "baseUrl": "./src",
     "esModuleInterop": true,
